@@ -1,16 +1,16 @@
-Progress: |██████████------------------------------|  25.00% (1/4)2025-10-30 11:09:50 [INFO] [PHONE BLOCK] GMPI_ID: nan, First Name: Suja, Last Name: Ganesh, Phone: 4246107546
-2025-10-30 11:09:50 [INFO] [LOOKUP] 🔍 Checking phone: +14246107546
+Progress: |██████████------------------------------|  25.00% (1/4)2025-10-30 11:09:50 [INFO] [PHONE BLOCK] GMPI_ID: nan, First Name: Suja, Last Name: Ganesh, Phone: 4246107555
+2025-10-30 11:09:50 [INFO] [LOOKUP] 🔍 Checking phone: +14246107555
 2025-10-30 11:09:50 [INFO] [AUTH] Requesting new access token...
 2025-10-30 11:09:50 [INFO] [AUTH] Response Status: 200
 2025-10-30 11:09:50 [INFO] [AUTH] ✅ Access token received.
 2025-10-30 11:09:50 [INFO] [LOOKUP] Status: 200
-2025-10-30 11:09:50 [INFO] [LOOKUP] ✅ Found phone: {'id': 32221851, 'number': '+14246107546', 'language_id': 1, 'do_not_contact': False, 'country-code': 'US', 'national-number': '4246107546', 'language-code': 'eng', 'created-at': '2025-09-18T19:08:49Z', 'updated-at': '2025-09-18T19:08:49Z'}
+2025-10-30 11:09:50 [INFO] [LOOKUP] ✅ Found phone: {'id': 32221851, 'number': '+14246107555', 'language_id': 1, 'do_not_contact': False, 'country-code': 'US', 'national-number': '4246107555', 'language-code': 'eng', 'created-at': '2025-09-18T19:08:49Z', 'updated-at': '2025-09-18T19:08:49Z'}
 
-2025-10-30 11:09:50 [INFO] [SUBSCRIPTION] 🔍 Checking subscription for: +14246107546
+2025-10-30 11:09:50 [INFO] [SUBSCRIPTION] 🔍 Checking subscription for: +14246107555
 2025-10-30 11:09:51 [INFO] [SUBSCRIPTION] Status: 200
 2025-10-30 11:09:51 [INFO] [SUBSCRIPTION] ✅ Already Subscribed: [{'id': 152675661, 'status': 'subscribed', 'phone-id': 32221851, 'program-id': 1234567, 'performed-at': '2025-10-06T01:54:47Z', 'created-at': '2025-10-06T01:54:47Z', 'updated-at': '2025-10-06T01:54:47Z', 'metadata': {'gmpi_id': 'nan'}}]
 
 2025-10-30 11:09:51 [INFO] [SMS] Sending SMS to Phone ID: 32221851
-2025-10-30 11:09:51 [INFO] [SMS] Status Code: 200, Response: {'id': 137543346, 'vars': {}, 'phone-id': 32221851, 'program-id': 1234567, 'adapter-id': 400381, 'template-id': 4455532, 'generated-body': 'From WellMed: Get the right care at the right time, discover how we are here for you https://wellmed.care/getcare Reply STOP to stop; HELP to help.', 'number_of_segments': 1, 'send-immediately': False, 'phone': {'id': 32221851, 'number': '+14246107546', 'language_id': 1, 'do_not_contact': False, 'country-code': 'US', 'national-number': '4246107546', 'language-code': 'eng', 'created-at': '2025-09-18T19:08:49Z', 'updated-at': '2025-09-18T19:08:49Z'}, 'status': 'pending', 'deliver-on': '2025-10-30T18:09:51Z', 'expire-at': '2025-11-02T18:09:51Z', 'language': 'eng', 'created-at': '2025-10-30T18:09:51Z', 'updated-at': '2025-10-30T18:09:51Z'}     
+2025-10-30 11:09:51 [INFO] [SMS] Status Code: 200, Response: {'id': 137543346, 'vars': {}, 'phone-id': 32221851, 'program-id': 1234567, 'adapter-id': 400381, 'template-id': 4455532, 'generated-body': 'From WellMed: Get the right care at the right time, discover how we are here for you https://wellmed.care/getcare Reply STOP to stop; HELP to help.', 'number_of_segments': 1, 'send-immediately': False, 'phone': {'id': 32221851, 'number': '+14246107555', 'language_id': 1, 'do_not_contact': False, 'country-code': 'US', 'national-number': '4246107555', 'language-code': 'eng', 'created-at': '2025-09-18T19:08:49Z', 'updated-at': '2025-09-18T19:08:49Z'}, 'status': 'pending', 'deliver-on': '2025-10-30T18:09:51Z', 'expire-at': '2025-11-02T18:09:51Z', 'language': 'eng', 'created-at': '2025-10-30T18:09:51Z', 'updated-at': '2025-10-30T18:09:51Z'}     
 
-2025-10-30 11:09:51 [INFO] [RESULT] GMPI_ID: nan, First Name: Suja, Last Name: Ganesh, Phone: 4246107546, Creation: Already Exists, Subscription: Already Subscribed, SMS: SMS Status: pending
+2025-10-30 11:09:51 [INFO] [RESULT] GMPI_ID: nan, First Name: Suja, Last Name: Ganesh, Phone: 4246107555, Creation: Already Exists, Subscription: Already Subscribed, SMS: SMS Status: pending
