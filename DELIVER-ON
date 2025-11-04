@@ -1,0 +1,120 @@
+post /outbound-messages
+Implementation Notes
+Sends a message to a phone if the phone can receive messages. Refer to the program's confirmation-type for reference on how to determine if a phone can receive messages from your program. The sms message will be sent asynchronously and status will be updated accordingly. To check the status of an outbound-message, make a GET /outbound-messages/{outbound-message-id} call.
+
+The Message content can either be supplied via a template-id OR a body. Do not supply a template-id and body.
+
+To send a Message using a static body, submit it in the body key.
+
+  {
+    "body": "Hello world",
+    ...
+  }
+To send a Message using a Template and optional vars, enter the template-id to use and optional vars within the Template. Refer to the Template documentation for more details.
+
+  {
+    "template-id": 1,
+    "vars": {
+      "foo": "bar",
+      "this": "that"
+    },
+    ...
+  }
+If a template has multiple template bodies with different languages, you can add a language parameter to specify which language body we should use according to the language code. The language parameter should be a three character ISO 639-3 abbreviation (Ex. "spa" for Spanish, "eng" for English). This is a case-sensitive option, and will default to English if a template body for the provided language code isn't available on the given template. If no language is specified, the English template body will be used:
+
+  {
+    "template-id": 1,
+    "language": "spa"
+  }
+You can optionally specify a deliver-on timestamp in ISO8601 format which will delay sending the Message until the specified time occurs. The time entered must be between now and two years into the future.
+
+  {
+    "body": "Hello world",
+    "deliver-on": "2017-09-28T21:58:59-06:00",
+    ...
+  }
+Please note that SMS Manager will not check if the Phone can receive the Message until deliver time. This means that you can queue up Messages for a phone even before it has the adequate Subscription status.
+
+In addition to deliver-on, you may set expire-at as an ISO8601 formatted timestamp. If the message has not been sent by expire-at then its status will be set to expired and no more attempts to send the message will be made. The expire-at attribute can be set anywhere from five minutes to 3 days after deliver-on.
+
+If expire-at is not set when creating the message, it will be automatically be defaulted to deliver-on + 24 hours. This default is set in the /v1/features endpoint, but may be overwritten by setting outbound-message-expire-in on the Program. Either of these defaults may be overwritten by setting expire-in on the message.
+
+Response Class (Status 200)
+Outbound message successfully created.
+
+ModelExample Value
+{
+  "id": 123,
+  "body": "Hello World",
+  "vars": {},
+  "phone-id": 234,
+  "program-id": 345,
+  "send-immediately": false,
+  "phone": {
+    "id": 234,
+    "number": "+15551234567",
+    "timezone": "America/Chicago",
+    "country-code": "US",
+    "created-at": "2017-03-24T15:19:23Z",
+    "updated-at": "2017-03-24T15:19:23Z",
+    "metadata": {
+      "id-type": "CS",
+      "id-value": "123456",
+      "first-name": "First",
+      "last-name": "Last"
+    }
+  },
+  "status": "pending",
+  "deliver-on": "2017-03-24T15:19:23.195Z",
+  "expire-at": "2017-03-24T18:19:23.195Z",
+  "created-at": "2017-03-24T15:19:23.195Z",
+  "updated-at": "2017-03-24T15:19:23.195Z"
+}
+
+
+Response Content Type 
+application/json
+Parameters
+Parameter	Value	Description	Parameter Type	Data Type
+outbound message	
+(required)
+
+Parameter content type: 
+application/json
+Outbound message to add
+
+body	
+ModelExample Value
+{
+  "phone": "+15551234567",
+  "program-id": 345,
+  "body": "Hello World",
+  "deliver-on": "2017-03-24T15:19:23.195Z",
+  "expire-at": "2017-03-26T15:19:23.195Z"
+}
+Response Messages
+HTTP Status Code	Reason	Response Model	Headers
+422	
+validation error
+
+ModelExample Value
+{
+  "message": "Could not create object",
+  "errors": {
+    "attribute1": [
+      "error message 1",
+      "error message 2"
+    ],
+    "attribute2": [
+      "error message 3"
+    ]
+  }
+}
+500	
+internal server error
+
+ModelExample Value
+{
+  "message": "An error that we didn't expect. We will look in to it!",
+  "description": "ExampleError: example error description"
+}
