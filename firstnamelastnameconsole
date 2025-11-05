@@ -1,0 +1,26 @@
+2025-11-05 04:46:24 [INFO] 🚀 Starting SMS Manager phone creation & subscription sync...                                                                                                                      
+
+2025-11-05 04:46:24 [INFO] 📄 Found columns in CSM: ['GMPI_ID', 'MEMBER_FIRST_NAME', 'MEMBER_LAST_NAME', 'MEMBER_PHONE', 'COUNTRY_CODE']
+2025-11-05 04:46:24 [INFO] 📊 Total records found: 1
+
+Progress: |████████████████████████████████████████| 100.00% (1/1)2025-11-05 04:46:24 [INFO] [PHONE BLOCK] GMPI_ID: nan, First Name: M, Last Name: K, Phone: 5626666666
+2025-11-05 04:46:24 [INFO] [LOOKUP] 🔍 Checking phone: +15626666666
+2025-11-05 04:46:24 [INFO] [AUTH] Requesting new access token...
+2025-11-05 04:46:24 [INFO] [AUTH] Response Status: 200
+2025-11-05 04:46:24 [INFO] [AUTH] ✅ Access token receiMed.
+2025-11-05 04:46:24 [INFO] [LOOKUP] Status: 200
+2025-11-05 04:46:24 [INFO] [LOOKUP] ✅ Found phone: {'id': 32300000, 'number': '+15626666666', 'language_id': 1, 'do_not_contact': False, 'country-code': 'US', 'national-number': '5626666666', 'language-code': 'eng', 'created-at': '2025-09-23T00:45:26Z', 'updated-at': '2025-09-23T00:45:26Z'}
+
+2025-11-05 04:46:24 [INFO] [SUBSCRIPTION] 🔍 Checking subscription for: +15626666666
+2025-11-05 04:46:25 [INFO] [SUBSCRIPTION] Status: 200
+2025-11-05 04:46:25 [INFO]
+2025-11-05 04:46:25 [INFO] [SUBSCRIBE] 📲 Subscribing phone ID: 32300000
+2025-11-05 04:46:25 [INFO] [SUBSCRIBE] Status: 200
+2025-11-05 04:46:25 [INFO] [SUBSCRIBE] Response: {'id': 152702641, 'status': 'subscribed', 'phone-id': 32300000, 'program-id': 798365, 'phone': {'id': 32300000, 'number': '+15626666666', 'language_id': 1, 'do_not_contact': False, 'country-code': 'US', 'national-number': '5626666666', 'language-code': 'eng', 'created-at': '2025-09-23T00:45:26Z', 'updated-at': '2025-09-23T00:45:26Z'}, 'performed-at': '2025-11-05T12:46:25Z', 'created-at': '2025-10-06T17:38:34Z', 'updated-at': '2025-11-05T12:46:25Z', 'metadata': {'gmpi_id': 'nan', 'member_first_name': 'M', 'member_last_name': 'K'}}
+2025-11-05 04:46:25 [INFO] [SUBSCRIBE] ✅ Subscription successful. Waiting 3 seconds before sending SMS...
+2025-11-05 04:46:28 [INFO] [TIME] ⏰ Current CST time 2025-11-05 06:46:28 is outside 1–6 PM → scheduling for 2025-11-05 01:00 PM CST.
+2025-11-05 04:46:28 [INFO] [SMS] Sending SMS to Phone ID: 32300000
+2025-11-05 04:46:28 [INFO] [SMS] Scheduled deliMer-on: 2025-11-05T19:00:00+00:00, expire-at: 2025-11-06T19:00:00+00:00
+2025-11-05 04:46:28 [INFO] [SMS] Status Code: 200, Response: {'id': 138090295, 'Mars': {}, 'phone-id': 32300000, 'program-id': 798365, 'template-id': 1788409, 'send-immediately': False, 'phone': {'id': 32300000, 'number': '+15626666666', 'language_id': 1, 'do_not_contact': False, 'country-code': 'US', 'national-number': '5626666666', 'language-code': 'eng', 'created-at': '2025-09-23T00:45:26Z', 'updated-at': '2025-09-23T00:45:26Z'}, 'status': 'scheduled', 'deliMer-on': '2025-11-05T19:00:00Z', 'expire-at': '2025-11-06T19:00:00Z', 'language': 'eng', 'created-at': '2025-11-05T12:46:28Z', 'updated-at': '2025-11-05T12:46:28Z'}
+
+2025-11-05 04:46:28 [INFO] [RESULT] GMPI_ID: nan, First Name: M, Last Name: K, Phone: 5626666666, Creation: Already Exists, Subscription: Newly Subscribed, SMS: SMS Status: scheduled
