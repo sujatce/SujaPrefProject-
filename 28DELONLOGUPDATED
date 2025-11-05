@@ -71,8 +71,9 @@ def get_delivery_times():
 
     expire_at_cst = deliver_on_cst + timedelta(hours=24)
 
-    deliver_on_utc = deliver_on_cst.astimezone(timezone.utc).isoformat()
-    expire_at_utc = expire_at_cst.astimezone(timezone.utc).isoformat()
+    # ✅ Updated formatting to Z-style ISO with milliseconds
+    deliver_on_utc = deliver_on_cst.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
+    expire_at_utc  = expire_at_cst.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
 
     return deliver_on_utc, expire_at_utc
 
@@ -393,9 +394,3 @@ if __name__ == "__main__":
     phone_manager = SMSPhoneManager(
         api_base_url=API_BASE_URL,
         token_service=token_service,
-        program_id=PROGRAM_ID,
-        template_id=TEMPLATE_ID,
-        output_csv=OUTPUT_CSV
-    )
-
-    phone_manager.process_csv(INPUT_CSV)
