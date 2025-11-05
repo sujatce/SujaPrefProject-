@@ -1,3 +1,38 @@
+# -------------------- Helper: Delivery Time Window --------------------
+def get_delivery_times():
+    """Return deliver-on and expire-at times in ISO8601 UTC format (based on 1PM–6PM CST window)."""
+    now_utc = datetime.now(timezone.utc)
+    cst = ZoneInfo("America/Chicago")
+    now_cst = now_utc.astimezone(cst)
+
+    start_hour = 13  # 1 PM CST
+    end_hour = 18    # 6 PM CST
+
+    # ✅ If current time is between 1 PM–6 PM CST → send immediately
+    if start_hour <= now_cst.hour < end_hour:
+        deliver_on_cst = now_cst
+        logging.info(f"[TIME] 🕐 Current CST time {now_cst.strftime('%Y-%m-%d %H:%M:%S')} is within 1–6 PM → sending immediately.")
+    else:
+        # ✅ Otherwise schedule for next day 1 PM CST
+        if now_cst.hour >= end_hour:
+            deliver_day = now_cst.date() + timedelta(days=1)
+        else:
+            deliver_day = now_cst.date()
+        deliver_on_cst = datetime.combine(deliver_day, datetime.min.time(), tzinfo=cst).replace(hour=start_hour)
+        logging.info(f"[TIME] ⏰ Current CST time {now_cst.strftime('%Y-%m-%d %H:%M:%S')} is outside 1–6 PM → scheduling for {deliver_on_cst.strftime('%Y-%m-%d %I:%M %p CST')}.")
+
+    expire_at_cst = deliver_on_cst + timedelta(hours=24)
+
+    # ✅ Updated formatting to Z-style ISO with milliseconds
+    deliver_on_utc = deliver_on_cst.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
+    expire_at_utc  = expire_at_cst.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
+
+    return deliver_on_utc, expire_at_utc
+
+can you please update this code to the following program and dont change anything else 
+
+and give me the updated program 
+
 import csv
 import requests
 from requests.adapters import HTTPAdapter
@@ -71,9 +106,8 @@ def get_delivery_times():
 
     expire_at_cst = deliver_on_cst + timedelta(hours=24)
 
-    # ✅ Updated formatting to Z-style ISO with milliseconds
-    deliver_on_utc = deliver_on_cst.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
-    expire_at_utc  = expire_at_cst.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
+    deliver_on_utc = deliver_on_cst.astimezone(timezone.utc).isoformat()
+    expire_at_utc = expire_at_cst.astimezone(timezone.utc).isoformat()
 
     return deliver_on_utc, expire_at_utc
 
@@ -399,4 +433,4 @@ if __name__ == "__main__":
         output_csv=OUTPUT_CSV
     )
 
-    phone_manager.process_csv(INPUT
+    phone_manager.process_csv(INPUT_CSV)
