@@ -1,0 +1,35 @@
+    payload = {
+            "template-id": 1788409,
+            "deliver-on": "2025-11-05T19:40:14.154730+00:00",
+            "expire-at": "2025-11-06T19:40:14.154730+00:00"
+        }
+
+
+
+        {
+  "id": 123,
+  "body": "Hello World",
+  "vars": {},
+  "phone-id": 234,
+  "program-id": 345,
+  "send-immediately": false,
+  "phone": {
+    "id": 234,
+    "number": "+15551234567",
+    "timezone": "America/Chicago",
+    "country-code": "US",
+    "created-at": "2017-03-24T15:19:23Z",
+    "updated-at": "2017-03-24T15:19:23Z",
+    "metadata": {
+      "id-type": "CS",
+      "id-value": "123456",
+      "first-name": "First",
+      "last-name": "Last"
+    }
+  },
+  "status": "pending",
+  "deliver-on": "2017-03-24T15:19:23.195Z",
+  "expire-at": "2017-03-24T18:19:23.195Z",
+  "created-at": "2017-03-24T15:19:23.195Z",
+  "updated-at": "2017-03-24T15:19:23.195Z"
+"
